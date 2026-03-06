@@ -27,6 +27,16 @@ function BoltIcon({ active }: { active: boolean }) {
   );
 }
 
+function BagIcon({ active }: { active: boolean }) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={active ? "#fff" : "rgba(255,255,255,0.4)"} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+      <line x1="3" y1="6" x2="21" y2="6" />
+      <path d="M16 10a4 4 0 01-8 0" />
+    </svg>
+  );
+}
+
 function PersonIcon({ active }: { active: boolean }) {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={active ? "#fff" : "rgba(255,255,255,0.4)"} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -40,6 +50,7 @@ const tabs = [
   { id: "home", label: "Home", Icon: HomeIcon },
   { id: "schedule", label: "Schedule", Icon: CalendarIcon },
   { id: "wod", label: "WOD", Icon: BoltIcon },
+  { id: "shop", label: "Shop", Icon: BagIcon },
   { id: "profile", label: "Profile", Icon: PersonIcon },
 ];
 

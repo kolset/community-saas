@@ -5,6 +5,7 @@ import TabBar from "./TabBar";
 import HomeScreen from "./screens/HomeScreen";
 import ScheduleScreen from "./screens/ScheduleScreen";
 import WodScreen from "./screens/WodScreen";
+import ShopScreen from "./screens/ShopScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 
 export default function MobileSimulator() {
@@ -14,6 +15,7 @@ export default function MobileSimulator() {
     home: <HomeScreen />,
     schedule: <ScheduleScreen />,
     wod: <WodScreen />,
+    shop: <ShopScreen />,
     profile: <ProfileScreen />,
   };
 
