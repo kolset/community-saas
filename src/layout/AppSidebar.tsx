@@ -34,7 +34,10 @@ const navItems: NavItem[] = [
   {
     icon: <GroupIcon />,
     name: "Members",
-    path: "/members",
+    subItems: [
+      { name: "All Members", path: "/members" },
+      { name: "AvtaleGiro", path: "/avtalegiro", new: true },
+    ],
   },
   {
     icon: <CalenderIcon />,
