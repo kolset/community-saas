@@ -19,7 +19,7 @@ export default function MobileSimulator() {
 
   return (
     <div>
-      <div className="mb-6">
+      <div className="mb-8">
         <h2 className="text-lg font-semibold text-gray-800 dark:text-white/90">
           Mobile App Preview
         </h2>
@@ -27,10 +27,10 @@ export default function MobileSimulator() {
           Preview how members experience the CrossFit Bjornsvik app
         </p>
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center py-8">
         <PhoneFrame>
           <div className="flex flex-col h-full">
-            <div className="flex-1 overflow-y-auto">
+            <div className="flex-1 overflow-y-auto" style={{ scrollbarWidth: "none" }}>
               {screens[activeTab]}
             </div>
             <TabBar activeTab={activeTab} onTabChange={setActiveTab} />

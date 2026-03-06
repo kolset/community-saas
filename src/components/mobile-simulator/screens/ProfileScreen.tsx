@@ -8,12 +8,12 @@ const stats = [
 ];
 
 const badges = [
-  { emoji: "\u{1F4AF}", name: "100 WODs" },
-  { emoji: "\u{1F525}", name: "6-Month Streak" },
-  { emoji: "\u{1F3C6}", name: "Murph Finisher" },
-  { emoji: "\u{1F451}", name: "PR King" },
-  { emoji: "\u{1F305}", name: "Early Bird" },
-  { emoji: "\u{1F4AA}", name: "First Pull-up" },
+  { icon: "C", name: "100 WODs" },
+  { icon: "S", name: "6-Mo Streak" },
+  { icon: "M", name: "Murph" },
+  { icon: "P", name: "PR King" },
+  { icon: "E", name: "Early Bird" },
+  { icon: "F", name: "First Pull-up" },
 ];
 
 const prs = [
@@ -26,61 +26,90 @@ const prs = [
 
 export default function ProfileScreen() {
   return (
-    <div className="bg-white min-h-full" style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" }}>
+    <div className="min-h-full" style={{ background: "#000", fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" }}>
       {/* Profile Header */}
-      <div className="flex flex-col items-center px-4 pt-4 pb-3">
-        <Image src="/images/user/user-01.jpg" alt="Erik Hansen" width={80} height={80} className="w-20 h-20 rounded-full object-cover" />
-        <h1 className="mt-2 text-[20px] font-bold text-black">Erik Hansen</h1>
-        <p className="text-[13px] text-gray-500">Member since Mar 2024</p>
+      <div className="flex flex-col items-center px-5 pt-6 pb-4">
+        <div className="w-[88px] h-[88px] rounded-full p-[2px]" style={{ background: "linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.05))" }}>
+          <Image src="/images/user/user-01.jpg" alt="Erik Hansen" width={84} height={84} className="w-full h-full rounded-full object-cover" />
+        </div>
+        <h1 className="mt-3 text-[22px] font-bold tracking-tight" style={{ color: "#fff" }}>Erik Hansen</h1>
+        <p className="text-[13px] mt-0.5" style={{ color: "rgba(255,255,255,0.4)" }}>Member since Mar 2024</p>
       </div>
 
       {/* Stats Row */}
-      <div className="flex justify-center gap-8 px-4 py-3 mx-4 rounded-xl bg-gray-50">
-        {stats.map((s) => (
-          <div key={s.label} className="flex flex-col items-center">
-            <span className="text-[20px] font-bold text-black">{s.value}</span>
-            <span className="text-[11px] text-gray-500">{s.label}</span>
+      <div className="flex justify-center gap-0 mx-5 rounded-2xl overflow-hidden" style={{ background: "rgba(255,255,255,0.05)" }}>
+        {stats.map((s, i) => (
+          <div
+            key={s.label}
+            className="flex flex-col items-center py-4 flex-1"
+            style={{ borderRight: i < stats.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none" }}
+          >
+            <span className="text-[22px] font-bold" style={{ color: "#fff" }}>{s.value}</span>
+            <span className="text-[11px] mt-0.5 uppercase tracking-wider" style={{ color: "rgba(255,255,255,0.35)" }}>{s.label}</span>
           </div>
         ))}
       </div>
 
       {/* Membership Card */}
-      <div className="mx-4 mt-4 p-4 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-700 text-white">
-        <p className="text-[11px] uppercase tracking-wider text-gray-400">Membership</p>
-        <p className="text-[18px] font-bold mt-0.5">Premium</p>
-        <div className="flex justify-between items-end mt-3">
+      <div
+        className="mx-5 mt-4 p-5 rounded-2xl"
+        style={{
+          background: "linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)",
+          border: "1px solid rgba(255,255,255,0.08)",
+        }}
+      >
+        <div className="flex items-start justify-between">
           <div>
-            <p className="text-[11px] text-gray-400">Next billing</p>
-            <p className="text-[14px] font-medium">Apr 1, 2026</p>
+            <p className="text-[11px] uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.35)" }}>Membership</p>
+            <p className="text-[20px] font-bold mt-1" style={{ color: "#fff" }}>Premium</p>
           </div>
-          <p className="text-[20px] font-bold">999 kr<span className="text-[12px] font-normal text-gray-400">/mnd</span></p>
+          <div className="text-right">
+            <p className="text-[22px] font-bold" style={{ color: "#fff" }}>999 <span className="text-[13px] font-normal" style={{ color: "rgba(255,255,255,0.4)" }}>kr/mnd</span></p>
+          </div>
+        </div>
+        <div className="mt-3 pt-3 flex items-center justify-between" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+          <p className="text-[12px]" style={{ color: "rgba(255,255,255,0.4)" }}>Next billing</p>
+          <p className="text-[13px] font-medium" style={{ color: "rgba(255,255,255,0.7)" }}>Apr 1, 2026</p>
         </div>
       </div>
 
       {/* Badges */}
-      <div className="px-4 mt-5">
-        <h2 className="text-[17px] font-bold text-black mb-3">Badges</h2>
+      <div className="px-5 mt-6">
+        <h2 className="text-[13px] uppercase tracking-widest font-medium mb-3" style={{ color: "rgba(255,255,255,0.35)" }}>Badges</h2>
         <div className="grid grid-cols-3 gap-2">
           {badges.map((b) => (
-            <div key={b.name} className="flex flex-col items-center gap-1 p-3 rounded-xl bg-gray-50">
-              <span className="text-[24px]">{b.emoji}</span>
-              <span className="text-[10px] font-medium text-gray-600 text-center">{b.name}</span>
+            <div
+              key={b.name}
+              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl"
+              style={{ background: "rgba(255,255,255,0.04)" }}
+            >
+              <div
+                className="w-10 h-10 rounded-full flex items-center justify-center text-[16px] font-bold"
+                style={{ background: "rgba(255,255,255,0.08)", color: "#fff" }}
+              >
+                {b.icon}
+              </div>
+              <span className="text-[10px] font-medium text-center leading-tight" style={{ color: "rgba(255,255,255,0.5)" }}>{b.name}</span>
             </div>
           ))}
         </div>
       </div>
 
       {/* Personal Records */}
-      <div className="px-4 mt-5 pb-4">
-        <h2 className="text-[17px] font-bold text-black mb-3">Personal Records</h2>
-        <div className="space-y-2">
+      <div className="px-5 mt-6 pb-6">
+        <h2 className="text-[13px] uppercase tracking-widest font-medium mb-3" style={{ color: "rgba(255,255,255,0.35)" }}>Personal Records</h2>
+        <div className="space-y-1">
           {prs.map((pr) => (
-            <div key={pr.movement} className="flex items-center justify-between p-3 rounded-xl bg-gray-50">
+            <div
+              key={pr.movement}
+              className="flex items-center justify-between px-4 py-3.5 rounded-xl"
+              style={{ background: "rgba(255,255,255,0.04)" }}
+            >
               <div>
-                <p className="text-[14px] font-medium text-black">{pr.movement}</p>
-                <p className="text-[11px] text-gray-500">{pr.date}</p>
+                <p className="text-[14px] font-medium" style={{ color: "#fff" }}>{pr.movement}</p>
+                <p className="text-[11px] mt-0.5" style={{ color: "rgba(255,255,255,0.3)" }}>{pr.date}</p>
               </div>
-              <span className="text-[15px] font-bold text-black">{pr.weight}</span>
+              <span className="text-[16px] font-bold tabular-nums" style={{ color: "#fff" }}>{pr.weight}</span>
             </div>
           ))}
         </div>

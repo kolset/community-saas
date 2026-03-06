@@ -1,23 +1,70 @@
 "use client";
 
+function HomeIcon({ active }: { active: boolean }) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={active ? "#fff" : "rgba(255,255,255,0.4)"} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z" />
+      <path d="M9 21V12h6v9" />
+    </svg>
+  );
+}
+
+function CalendarIcon({ active }: { active: boolean }) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={active ? "#fff" : "rgba(255,255,255,0.4)"} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="4" width="18" height="18" rx="2" />
+      <path d="M16 2v4M8 2v4M3 10h18" />
+      <circle cx="12" cy="16" r="1" fill={active ? "#fff" : "rgba(255,255,255,0.4)"} stroke="none" />
+    </svg>
+  );
+}
+
+function BoltIcon({ active }: { active: boolean }) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={active ? "#fff" : "rgba(255,255,255,0.4)"} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+    </svg>
+  );
+}
+
+function PersonIcon({ active }: { active: boolean }) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={active ? "#fff" : "rgba(255,255,255,0.4)"} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="8" r="4" />
+      <path d="M20 21c0-3.87-3.58-7-8-7s-8 3.13-8 7" />
+    </svg>
+  );
+}
+
 const tabs = [
-  { id: "home", label: "Home", icon: "\u{1F3E0}" },
-  { id: "schedule", label: "Schedule", icon: "\u{1F4C5}" },
-  { id: "wod", label: "WOD", icon: "\u{1F3CB}\u{FE0F}" },
-  { id: "profile", label: "Profile", icon: "\u{1F464}" },
+  { id: "home", label: "Home", Icon: HomeIcon },
+  { id: "schedule", label: "Schedule", Icon: CalendarIcon },
+  { id: "wod", label: "WOD", Icon: BoltIcon },
+  { id: "profile", label: "Profile", Icon: PersonIcon },
 ];
 
 export default function TabBar({ activeTab, onTabChange }: { activeTab: string; onTabChange: (tab: string) => void }) {
   return (
-    <div className="flex items-center justify-around px-4 pb-6 pt-2" style={{ background: "rgba(255,255,255,0.85)", backdropFilter: "blur(20px)", borderTop: "1px solid rgba(0,0,0,0.08)" }}>
+    <div
+      className="flex items-center justify-around px-4 pb-7 pt-2"
+      style={{
+        background: "rgba(0,0,0,0.85)",
+        backdropFilter: "blur(30px)",
+        WebkitBackdropFilter: "blur(30px)",
+        borderTop: "1px solid rgba(255,255,255,0.08)",
+      }}
+    >
       {tabs.map((tab) => (
         <button
           key={tab.id}
           onClick={() => onTabChange(tab.id)}
-          className="flex flex-col items-center gap-0.5"
+          className="flex flex-col items-center gap-0.5 min-w-[56px]"
         >
-          <span className="text-[22px]">{tab.icon}</span>
-          <span className={`text-[10px] font-medium ${activeTab === tab.id ? "text-blue-500" : "text-gray-400"}`}>
+          <tab.Icon active={activeTab === tab.id} />
+          <span
+            className="text-[10px] font-medium mt-0.5"
+            style={{ color: activeTab === tab.id ? "#fff" : "rgba(255,255,255,0.4)" }}
+          >
             {tab.label}
           </span>
         </button>
